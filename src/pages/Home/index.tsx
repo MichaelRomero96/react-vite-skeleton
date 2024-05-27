@@ -1,6 +1,8 @@
 import Page from '../../components/common/Page';
+import useStore from '../../store';
 
 const HomePage = () => {
+  const count = useStore((state) => state.count);
   return (
     <>
       <Page.Header
@@ -11,13 +13,13 @@ const HomePage = () => {
             label: 'New Vite',
           },
           {
-            fn: () => {},
-            label: 'Actions',
+            fn: () => useStore.getState().inc(),
+            label: 'Increase count',
             variant: 'secondary',
           },
         ]}
       />
-      <h2>Hello Dashboard</h2>
+      <h2>Hello Dashboard The store count is: {count}</h2>
     </>
   );
 };
